@@ -88,3 +88,30 @@ export function setStyle(element, styles) {
 
     }
 }
+
+
+
+
+
+
+export class HTMLS_InputObject extends HTMLS_Element {
+    constructor(elementT, width, height, styles, coords=[0,0], text, parent=document.body) {
+        super(elementT, width, height, styles, coords=[0,0], text, parent=document.body);
+        
+        this.before = document.createElement("span");
+        this.after = document.createElement("span");
+
+        this.before.classList.add("system-xT-C");
+
+        this.before.style.whiteSpace = "pre"
+        this.after.style.whiteSpace = "pre"
+
+        this.element.appendChild(this.before);
+        this.element.appendChild(this.after);
+    }
+
+    updateText(before, after) {
+        this.before.textContent = before;
+        this.after.textContent = after;
+    }
+}

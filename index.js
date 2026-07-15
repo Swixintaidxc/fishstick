@@ -1,4 +1,4 @@
-import { HTMLS_Element } from './OS2x/HTMLS/main.js';
+import { HTMLS_Element, HTMLS_InputObject } from './OS2x/HTMLS/main.js';
 import * as OS2x from './OS2x/OS2x.js'
 import * as OS2Fish from './fish3.js'
 
@@ -99,16 +99,16 @@ async function bios() {
     })
 
     stSet("terminal_whenKeydown", () => {
-        stGet("terminal_CInput").element.textContent = `${inputStream}`
+        stGet("terminal_CInput").updateText(inputStream.slice(0, cursor), inputStream.slice(cursor))
     })
 
     // bios startup code
 
     stSF("terminal_CInput", new HTMLS_Element("p", null, null, { color: "white", marginBottom: "0px", marginTop: "20px", marginLeft: styleSettings.terminalFontMarginLeft }, null, "OS2x (lux-0.0.1a.A) bios"))
-    await OS2x.Frame.uWait(2)
+    // await OS2x.Frame.uWait(2)
     stSF("terminal_CInput", new HTMLS_Element("p", null, null, stGet("terminal_textStyle"), null, "Loading..."))
-    await OS2x.Frame.uWait(5)
-    stSet("terminal_CInput", new HTMLS_Element("p", null, null, stGet("terminal_textStyle"), null, "dfssdfdff"))
+    // await OS2x.Frame.uWait(5)
+    stSet("terminal_CInput", new HTMLS_InputObject("p", null, null, stGet("terminal_textStyle"), null, null))
 
     // end bios startup code
 
@@ -129,6 +129,7 @@ async function bios() {
 async function main() {
     await bios();
 }
+
 
 
 await main()
