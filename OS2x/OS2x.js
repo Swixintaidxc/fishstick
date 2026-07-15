@@ -11,6 +11,9 @@ export const Graphics = {
 
 export const Util = {
     Terminal: Terminal,
-    Time: Time,
     uMath: uMath
+}
+
+export const Frame = {
+    uWait: Time.uWait
 }
